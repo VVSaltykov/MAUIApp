@@ -1,3 +1,5 @@
+using MAUI_API.Interfaces;
+using MAUI_API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAUI_API
@@ -19,6 +21,10 @@ namespace MAUI_API
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
+			builder.Services.AddTransient<IUser, UserRepository>();
+			builder.Services.AddTransient<FileRepository>();
+			builder.Services.AddTransient<EventLogRepository>();
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -33,6 +39,7 @@ namespace MAUI_API
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
+			app.UseAuthentication();
 
 
 			app.MapControllers();
