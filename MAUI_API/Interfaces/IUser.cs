@@ -1,4 +1,4 @@
-﻿using MAUI_API.Models;
+﻿using MAUIAppCommon.Models;
 
 namespace MAUI_API.Interfaces
 {

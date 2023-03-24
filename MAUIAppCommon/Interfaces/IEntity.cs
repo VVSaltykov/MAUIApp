@@ -1,4 +1,4 @@
-﻿namespace MAUI_API.Interfaces
+﻿namespace MAUIAppCommon.Interfaces
 {
     public interface IEntity
     {

@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+﻿using MAUI_API.Interfaces;
+using MAUIAppCommon.Models;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
-using MAUI_API;
-using MAUI_API.Interfaces;
-using MAUI_API.Models;
-using System.Reflection.Metadata.Ecma335;
 
 namespace MAUI_API.Repositories
 {
-    public class UserRepository: IUser
+    public class UserRepository : IUser
     {
         private readonly ApplicationContext appContext;
 

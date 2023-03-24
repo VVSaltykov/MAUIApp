@@ -1,0 +1,41 @@
+﻿<div class="container" align="middle" style="height: 100vh;">
+    <div class="d-flex justify-content-center w-100 h-100">
+        <div class="frame align-self-center col-md-3">
+            <div class="logo">
+                <img src="C:\Users\v.saltykov\Pictures\2.png" />
+            </div>
+            <div class="header">Авторизация</div>
+            <div>Пожалуйста, заполните все формы для авторизации.</div>
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Login"><b>Логин</b></label>
+            </div>
+            <div>
+                <input type="text" asp-for="Login" placeholder="Введите логин" required>
+            </div>
+
+            <div>
+                <label asp-for="Password"><b>Пароль</b></label>
+            </div>
+            <div>
+                <input type="text" asp-for="Password" placeholder="Введите пароль">
+            </div>
+
+            <div>
+                <form method="post" asp-area="" asp-controller="File" asp-action="File">
+                    <input type="submit" class="authbtn" value="Авторизоваться">
+                </form>
+            </div>
+
+            <div>
+                <form method="post" asp-area="" asp-controller="User" asp-action="Register">
+                    <button type="submit" class="regbtn">Регистрация</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

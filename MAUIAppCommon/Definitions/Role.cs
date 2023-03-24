@@ -1,4 +1,4 @@
-﻿namespace MAUI_API.Definitions
+﻿namespace MAUIAppCommon.Definitions
 {
 	public enum Role
 	{

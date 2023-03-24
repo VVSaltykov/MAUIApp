@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MAUI_API.Models
+namespace MAUIAppCommon.Models
 {
     public class File
     {

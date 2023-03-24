@@ -1,6 +1,6 @@
-﻿using MAUI_API.Interfaces;
+﻿using MAUIAppCommon.Interfaces;
 
-namespace MAUI_API.Models
+namespace MAUIAppCommon.Models
 {
     public class Home: IEntity
     {

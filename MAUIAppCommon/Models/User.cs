@@ -1,6 +1,6 @@
-﻿using MAUI_API.Definitions;
+﻿using MAUIAppCommon.Definitions;
 
-namespace MAUI_API.Models
+namespace MAUIAppCommon.Models
 {
     public class User
     {

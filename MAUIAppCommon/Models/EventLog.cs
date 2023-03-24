@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata;
 
-namespace MAUI_API.Models
+namespace MAUIAppCommon.Models
 {
     public class EventLog
     {

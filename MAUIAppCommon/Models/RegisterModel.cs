@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace MAUI_API.Models
+namespace MAUIAppCommon.Models
 {
     [Keyless]
     public class RegisterModel

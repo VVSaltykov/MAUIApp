@@ -1,4 +1,4 @@
-﻿using MAUI_API.Models;
+﻿using MAUIAppCommon.Models;
 using System.Net;
 
 namespace MAUI_API.Repositories

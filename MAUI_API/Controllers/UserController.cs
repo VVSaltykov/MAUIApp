@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using MAUI_API.Exceptions;
+using MAUI_API.Interfaces;
+using MAUI_API.Repositories;
+using MAUIAppCommon.Models;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
-using MAUI_API.Exceptions;
-using MAUI_API.Interfaces;
-using MAUI_API.Models;
-using MAUI_API.Repositories;
-using System.Net;
-using System.Security.Claims;
-using System.Security.Cryptography;
 
 namespace MAUI_API.Controllers
 {
@@ -24,7 +19,6 @@ namespace MAUI_API.Controllers
 
         [Route("~/User/Register")]
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public async Task Register(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
@@ -47,16 +41,12 @@ namespace MAUI_API.Controllers
                         numBytesRequested: 256 / 8));
 
                     await _IUser.AddNewUser(user);
-                    
-                    //await Authenticate(user);
-                    //HttpContext.Response.Cookies.Append("id", user.Id.ToString());
                 }
             }
         }
 
         [Route("~/User/Login")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
@@ -66,8 +56,6 @@ namespace MAUI_API.Controllers
                     User user = await _IUser.GetUserByLoginModelAsync(loginModel);
                     if (user != null)
                     {
-                        await Authenticate(user);
-                        HttpContext.Response.Cookies.Append("id", user.Id.ToString());
                         await eventLogRepository.AddLogger("Пользователь зашел в систему", user);
                     }
                     else
@@ -79,23 +67,9 @@ namespace MAUI_API.Controllers
                 }
                 catch (NotFoundException)
                 {
-					await eventLogRepository.AddLogger("Пользователь ввел некорректный логин и(или) пароль", null);
-				}
+                    await eventLogRepository.AddLogger("Пользователь ввел некорректный логин и(или) пароль", null);
+                }
             }
-        }
-
-        private async Task Authenticate(User user)
-        {
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
-            };
-
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
-                ClaimsIdentity.DefaultRoleClaimType);
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
     }
 }
